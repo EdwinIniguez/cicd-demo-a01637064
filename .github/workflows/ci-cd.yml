@@ -20,7 +20,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           IMAGE_NAME: java-image
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
+          docker build -f HelloWorld-java/Dockerfile -t $DOCKERHUB_USERNAME/$IMAGE_NAME:latest .
           docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
     
   build:
