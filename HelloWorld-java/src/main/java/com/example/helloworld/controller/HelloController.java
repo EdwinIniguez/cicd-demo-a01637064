@@ -1,6 +1,6 @@
+package com.example.helloworld.controller;
 //This file listens for HTTP requests and returns a response.
 //example.com/ will return "Hello World!"
-
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
