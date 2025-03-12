@@ -24,18 +24,8 @@ jobs:
           docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
     
   build:
-  stage: build
-  image: maven:3.8.5-openjdk-17
-  script:
-    - mvn clean package
-  artifacts:
-    paths:
-      - target/helloworldapp.jar
-
-
-test:
-  runs-on: ubuntu-latest
-  steps:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Java
@@ -43,5 +33,10 @@ test:
         with:
           distribution: 'adopt'
           java-version: '17'
-      - name: Run tests
-        run: mvn test
+      - name: Build with Maven
+        run: mvn clean package
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: helloworldapp
+          path: target/helloworldapp.jar
